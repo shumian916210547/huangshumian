@@ -1,0 +1,76 @@
+<template>
+	<div class="ListDetails">
+		<Modal v-model="modal" :fullscreen="true" :footer-hide="true" :closable="false">
+			<van-nav-bar title="歌单详情" left-text="返回" left-arrow @click-left="backClick" />
+			<div class="nav">
+				<img :src="res.data.playlist.coverImgUrl" />
+				<p>{{res.data.playlist.name}}</p>
+				<div class="van-multi-ellipsis--l2">{{res.data.playlist.description}}</div>
+			</div>
+		</Modal>
+	</div>
+</template>
+
+<script>
+	import { getListDetail } from "network/findpage/Findpage";
+
+	export default {
+		name: "ListDetails",
+		components: {},
+		props: {},
+		data() {
+			return {
+				modal: true,
+				res: {
+					data: {
+						playlist: "",
+					},
+				},
+			};
+		},
+		watch: {},
+		computed: {},
+		methods: {
+			backClick() {
+				this.modal = false;
+				this.$router.back(-1);
+			},
+		},
+		activated() {
+			this.modal = true;
+			getListDetail(this.$store.state.songlistid).then((res) => {
+				this.res = [];
+				console.log(res);
+				this.res = res;
+			});
+		},
+		created() {},
+		mounted() {},
+		destroyed() {},
+	};
+</script>
+<style lang="css" scoped>
+	.nav {
+		margin: 15px;
+		height: 100px;
+	}
+	.nav img {
+		width: 100px;
+		height: 100px;
+	}
+	.nav p:nth-child(2) {
+		position: relative;
+		width: 225px;
+		font-size: 16px;
+		top: -105px;
+		left: 120px;
+	}
+	.nav div:nth-child(3) {
+		position: absolute;
+		width: 225px;
+		height: 32px;
+		font-size: 12px;
+		top: 125px;
+		left: 135px;
+	}
+</style>

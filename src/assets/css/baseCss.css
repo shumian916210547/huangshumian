@@ -1,0 +1,24 @@
+.ivu-modal-body {
+  padding: 0px !important;
+}
+
+.van-tab__pane {
+  padding: 0 16px;
+}
+
+.van-nav-bar {
+  position: sticky !important;
+  top: 0;
+}
+
+.van-sticky {
+  padding: 0px 16px;
+}
+
+.van-tabs__wrap--scrollable .van-tab:nth-child(1) {
+  padding-left: 0px !important;
+}
+
+.van-tabs__wrap--scrollable .van-tab:nth-child(10) {
+  padding-right: 0px !important;
+}
