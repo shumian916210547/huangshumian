@@ -1,5 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import ViewUI from 'view-design';
+Vue.use(ViewUI);
 const customPush = VueRouter.prototype.push;
 
 const Find = () => import("views/find/Find");
@@ -54,6 +56,15 @@ const router = new VueRouter({
   mode: "hash",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  ViewUI.LoadingBar.start();
+  next();
+});
+
+router.afterEach(route => {
+  ViewUI.LoadingBar.finish();
 });
 
 export default router;

@@ -6,7 +6,9 @@ import ViewUI from "view-design";
 import "view-design/dist/styles/iview.css";
 import Vant from "vant";
 import "vant/lib/index.css";
-import { simplify } from "common/Simplify";
+import {
+  simplify
+} from "common/Simplify";
 
 Vue.use(Vant);
 
@@ -18,7 +20,9 @@ Vue.config.productionTip = false;
 router.beforeEach((to, from, next) => {
   if (store.state.token) {
     if (to.path == "/login") {
-      next({ path: "/my" });
+      next({
+        path: "/my"
+      });
     } else {
       next();
     }
@@ -29,7 +33,9 @@ router.beforeEach((to, from, next) => {
       if (to.path == "/login") {
         next();
       } else {
-        next({ path: "/login" });
+        next({
+          path: "/login"
+        });
       }
     }
   }
@@ -38,7 +44,7 @@ router.beforeEach((to, from, next) => {
 new Vue({
   router,
   store,
-  render: function(h) {
+  render: function (h) {
     return h(App);
   },
 }).$mount("#app");

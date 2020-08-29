@@ -73,3 +73,12 @@ export function getListDetail(id) {
     },
   });
 }
+
+export function getSongUrl(id) {
+  return Request({
+    url: "/song/url",
+    params: {
+      id,
+    },
+  });
+}

@@ -1,4 +1,9 @@
 import axios from "axios";
+import Vue from "vue";
+import ViewUI from 'view-design';
+Vue.use(ViewUI);
+
+
 
 export function Request(config) {
   const instance = axios.create({
@@ -10,6 +15,7 @@ export function Request(config) {
   //请求拦截
   instance.interceptors.request.use(
     (config) => {
+      ViewUI.LoadingBar.start();
       return config;
     },
     (err) => {
@@ -20,6 +26,7 @@ export function Request(config) {
   //响应拦截
   instance.interceptors.response.use(
     (res) => {
+      ViewUI.LoadingBar.finish();
       return res;
     },
     (err) => {

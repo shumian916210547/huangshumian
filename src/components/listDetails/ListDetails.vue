@@ -7,16 +7,26 @@
 				<p>{{res.data.playlist.name}}</p>
 				<div class="van-multi-ellipsis--l2">{{res.data.playlist.description}}</div>
 			</div>
+			<song-item
+				v-for="(item,index) in res.data.playlist.tracks"
+				:key="index"
+				:songitem="item"
+				:index="index"
+			/>
 		</Modal>
 	</div>
 </template>
 
 <script>
+	import SongItem from "components/songItem/SongItem";
+
 	import { getListDetail } from "network/findpage/Findpage";
 
 	export default {
 		name: "ListDetails",
-		components: {},
+		components: {
+			SongItem,
+		},
 		props: {},
 		data() {
 			return {
@@ -40,7 +50,6 @@
 			this.modal = true;
 			getListDetail(this.$store.state.songlistid).then((res) => {
 				this.res = [];
-				console.log(res);
 				this.res = res;
 			});
 		},
@@ -72,5 +81,6 @@
 		font-size: 12px;
 		top: 125px;
 		left: 135px;
+		color: rgb(182, 182, 182);
 	}
 </style>
