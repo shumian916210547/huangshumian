@@ -48,6 +48,7 @@
 		mounted() {},
 	};
 </script>
+
 <style lang="css" scoped>
 	.my-swipe {
 		margin: 10px 20px;
