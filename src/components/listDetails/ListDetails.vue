@@ -56,7 +56,7 @@
 <style lang="css" scoped>
 	.ListDetails {
 		position: relative;
-		top: -45px;
+		top: -55px;
 		left: 0px;
 		right: 0px;
 	}

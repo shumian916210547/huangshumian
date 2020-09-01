@@ -14,6 +14,9 @@ export default new Vuex.Store({
     avatarUrl: window.sessionStorage.getItem("avatarUrl"),
     songlistid: window.sessionStorage.getItem("songlistid"),
     music_src: window.sessionStorage.getItem("music_src"),
+    author: window.sessionStorage.getItem("author"),
+    songname: window.sessionStorage.getItem("songname"),
+    songurl: window.sessionStorage.getItem("songurl"),
   },
   mutations: {
     set_nickname: (state, data) => {
@@ -43,6 +46,18 @@ export default new Vuex.Store({
     set_music_src: (state, data) => {
       state.music_src = data;
       window.sessionStorage.setItem("music_src", data);
+    },
+    set_author: (state, data) => {
+      state.author = data;
+      window.sessionStorage.setItem("author", data);
+    },
+    set_songurl: (state, data) => {
+      state.songurl = data;
+      window.sessionStorage.setItem("songurl", data);
+    },
+    set_songname: (state, data) => {
+      state.songname = data;
+      window.sessionStorage.setItem("songname", data);
     },
   },
   actions: {},

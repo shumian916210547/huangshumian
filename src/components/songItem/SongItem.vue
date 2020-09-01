@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="SongItem"
-		@click="songid(songitem.id,songitem.name)"
+		@click="songid(songitem.id,songitem.name,songitem.ar[0].name,songitem.al.picUrl)"
 		:class="index % 2 ? 'even_num' : 'sin_num'"
 	>
 		<p>{{index+1}}</p>
@@ -30,23 +30,26 @@
 		watch: {},
 		computed: {},
 		methods: {
-			songid(id, name) {
+			songid(id, songname, author, songurl) {
 				this.$store.commit("set_music_src", "");
-				console.log(id, name);
 				getSongUrl(id).then((res) => {
-					console.log(res);
 					this.$store.commit("set_music_src", res.data.data[0].url);
+					this.$store.commit("set_songname", songname);
+					this.$store.commit("set_author", author);
+					this.$store.commit("set_songurl", songurl);
 				});
 			},
 		},
-		created() {},
+		created() {
+			console.log(this.songitem);
+		},
 		mounted() {},
 	};
 </script>
 <style lang="css" scoped>
 	.SongItem {
-		margin: 10px 0px;
-		height: 60px;
+		margin: 5px 0px;
+		height: 55px;
 	}
 	.SongItem p:nth-child(1) {
 		font-size: 16px;

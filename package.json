@@ -9,6 +9,7 @@
   "dependencies": {
     "@nutui/nutui": "^2.2.8",
     "better-scroll": "^1.15.2",
+    "less": "^3.12.2",
     "mand-mobile": "^2.5.12",
     "stylus-loader": "^3.0.2",
     "swiper": "^6.1.2",
