@@ -1,8 +1,6 @@
 <template>
 	<div class="Station">
-		<Modal v-model="modal" :fullscreen="true" :footer-hide="true" :closable="false">
-			<van-nav-bar title="电台" left-text="返回" left-arrow @click-left="onLeftClick" />
-		</Modal>
+		<van-nav-bar title="电台" left-text="返回" left-arrow @click-left="onLeftClick" />
 	</div>
 </template>
 
@@ -14,21 +12,17 @@
 		components: {},
 		props: {},
 		data() {
-			return {
-				modal: true,
-			};
+			return {};
 		},
 		watch: {},
 		computed: {},
 		methods: {
 			onLeftClick() {
 				this.$router.push("/find");
-				this.modal = false;
 			},
 		},
 		created() {},
 		activated() {
-			this.modal = true;
 			getBanner().then((res) => {
 				console.log(res);
 			});
@@ -37,4 +31,10 @@
 	};
 </script>
 <style lang="css" scoped>
+	.Station {
+		position: relative;
+		top: -45px;
+		left: 0px;
+		right: 0px;
+	}
 </style>

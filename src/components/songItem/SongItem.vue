@@ -1,5 +1,9 @@
 <template>
-	<div class="SongItem" @click="songid(songitem.id)" :class="index % 2 ? 'even_num' : 'sin_num'">
+	<div
+		class="SongItem"
+		@click="songid(songitem.id,songitem.name)"
+		:class="index % 2 ? 'even_num' : 'sin_num'"
+	>
 		<p>{{index+1}}</p>
 		<p>{{songitem.name}}</p>
 		<p>{{songitem.ar[0].name}} - {{songitem.al.name}}</p>
@@ -26,11 +30,12 @@
 		watch: {},
 		computed: {},
 		methods: {
-			songid(id) {
-				console.log(id);
+			songid(id, name) {
+				this.$store.commit("set_music_src", "");
+				console.log(id, name);
 				getSongUrl(id).then((res) => {
 					console.log(res);
-					/* console.log(res.data.data[0].url); */
+					this.$store.commit("set_music_src", res.data.data[0].url);
 				});
 			},
 		},

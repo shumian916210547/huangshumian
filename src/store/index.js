@@ -13,6 +13,7 @@ export default new Vuex.Store({
     token: window.sessionStorage.getItem("token"),
     avatarUrl: window.sessionStorage.getItem("avatarUrl"),
     songlistid: window.sessionStorage.getItem("songlistid"),
+    music_src: window.sessionStorage.getItem("music_src"),
   },
   mutations: {
     set_nickname: (state, data) => {
@@ -38,6 +39,10 @@ export default new Vuex.Store({
     set_songlistid: (state, data) => {
       state.songlistid = data;
       window.sessionStorage.setItem("songlistid", data);
+    },
+    set_music_src: (state, data) => {
+      state.music_src = data;
+      window.sessionStorage.setItem("music_src", data);
     },
   },
   actions: {},

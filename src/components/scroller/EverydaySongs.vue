@@ -1,30 +1,21 @@
 <template>
 	<div class="EverydaySongs">
-		<Modal v-model="modal" :fullscreen="true" :footer-hide="true">
-			<van-nav-bar title="每日推荐" left-text="返回" left-arrow @click-left="onLeftClick" />
-			<van-list>
-				<van-cell v-for="(item,index) in dailySongs" :key="index">
-					<div class="content">
-						<img :src="dailySongs[index].al.picUrl" />
-						<p>{{dailySongs[index].name}}</p>
-						<span>{{dailySongs[index].ar[0].name}}</span>
-					</div>
-				</van-cell>
-			</van-list>
-		</Modal>
+		<van-nav-bar title="每日推荐" left-text="返回" left-arrow @click-left="onLeftClick" />
+		<song-item v-for="(item,index) in dailySongs" :key="index" :songitem="item" :index="index" />
 	</div>
 </template>
 
 <script>
 	import { getEverySongs } from "network/findpage/Findpage";
-
+	import SongItem from "components/songItem/SongItem";
 	export default {
 		name: "EverydaySongs",
-		components: {},
+		components: {
+			SongItem,
+		},
 		props: {},
 		data() {
 			return {
-				modal: false,
 				dailySongs: [],
 			};
 		},
@@ -33,12 +24,10 @@
 		methods: {
 			onLeftClick() {
 				this.$router.push("/find");
-				this.modal = false;
 			},
 		},
 		created() {},
 		activated() {
-			this.modal = true;
 			this.dailySongs = [];
 			getEverySongs().then((res) => {
 				this.dailySongs.push(...res.data.data.dailySongs);
@@ -48,6 +37,12 @@
 	};
 </script>
 <style lang="css" scoped>
+	.EverydaySongs {
+		position: relative;
+		top: -45px;
+		left: 0px;
+		right: 0px;
+	}
 	.content {
 		height: 60px;
 	}

@@ -1,19 +1,17 @@
 <template>
 	<div class="ListDetails">
-		<Modal v-model="modal" :fullscreen="true" :footer-hide="true" :closable="false">
-			<van-nav-bar title="歌单详情" left-text="返回" left-arrow @click-left="backClick" />
-			<div class="nav">
-				<img :src="res.data.playlist.coverImgUrl" />
-				<p>{{res.data.playlist.name}}</p>
-				<div class="van-multi-ellipsis--l2">{{res.data.playlist.description}}</div>
-			</div>
-			<song-item
-				v-for="(item,index) in res.data.playlist.tracks"
-				:key="index"
-				:songitem="item"
-				:index="index"
-			/>
-		</Modal>
+		<van-nav-bar title="歌单详情" left-text="返回" left-arrow @click-left="backClick" />
+		<div class="nav">
+			<img :src="res.data.playlist.coverImgUrl" />
+			<p>{{res.data.playlist.name}}</p>
+			<div class="van-multi-ellipsis--l2">{{res.data.playlist.description}}</div>
+		</div>
+		<song-item
+			v-for="(item,index) in res.data.playlist.tracks"
+			:key="index"
+			:songitem="item"
+			:index="index"
+		/>
 	</div>
 </template>
 
@@ -30,7 +28,6 @@
 		props: {},
 		data() {
 			return {
-				modal: true,
 				res: {
 					data: {
 						playlist: "",
@@ -42,12 +39,10 @@
 		computed: {},
 		methods: {
 			backClick() {
-				this.modal = false;
 				this.$router.back(-1);
 			},
 		},
 		activated() {
-			this.modal = true;
 			getListDetail(this.$store.state.songlistid).then((res) => {
 				this.res = [];
 				this.res = res;
@@ -59,6 +54,12 @@
 	};
 </script>
 <style lang="css" scoped>
+	.ListDetails {
+		position: relative;
+		top: -45px;
+		left: 0px;
+		right: 0px;
+	}
 	.nav {
 		margin: 15px;
 		height: 100px;

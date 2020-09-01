@@ -86,7 +86,7 @@
 		position: absolute;
 		overflow: hidden;
 		top: 44px;
-		bottom: 0px;
+		bottom: 44px;
 		left: 0;
 		right: 0;
 	}

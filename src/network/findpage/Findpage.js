@@ -54,6 +54,7 @@ export function getPlaylist(cat) {
     url: "/top/playlist",
     params: {
       cat,
+      limit: "48",
     },
   });
 }

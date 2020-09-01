@@ -1,13 +1,11 @@
 <template>
 	<div class="songList">
-		<Modal v-model="modal" :fullscreen="true" :footer-hide="true" :closable="false">
-			<van-nav-bar title="歌单广场" left-text="返回" left-arrow @click-left="onLeftClick" />
-			<van-tabs @click="Onclick" :sticky="true" :offset-top="46">
-				<van-tab v-for="(item,index) in navTitle" :key="index" :title="navTitle[index]">
-					<play-list :CurretPlayList="showCurrent" />
-				</van-tab>
-			</van-tabs>
-		</Modal>
+		<van-nav-bar title="歌单广场" left-text="返回" left-arrow @click-left="onLeftClick" />
+		<van-tabs @click="Onclick" :sticky="true" :offset-top="46">
+			<van-tab v-for="(item,index) in navTitle" :key="index" :title="navTitle[index]">
+				<play-list :CurretPlayList="showCurrent" />
+			</van-tab>
+		</van-tabs>
 	</div>
 </template>
 
@@ -24,7 +22,6 @@
 		props: {},
 		data() {
 			return {
-				modal: true,
 				navTitle: [],
 				list: [],
 			};
@@ -45,7 +42,6 @@
 
 			onLeftClick() {
 				this.$router.push("/find");
-				this.modal = false;
 			},
 		},
 		created() {
@@ -53,7 +49,6 @@
 		},
 		activated() {
 			getCatlist().then((res) => {
-				this.modal = true;
 				this.navTitle = [];
 				this.navTitle.push(res.data.all.name);
 				for (var i = 0; i < 9; i++) {
@@ -66,6 +61,12 @@
 	};
 </script>
 <style lang="css" scoped>
+	.songList {
+		position: relative;
+		top: -45px;
+		left: 0px;
+		right: 0px;
+	}
 	.van-hairline--bottom::after {
 		border-bottom-width: 0px;
 	}

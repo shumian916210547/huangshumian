@@ -37,7 +37,6 @@
 			this.$bus.$on("getPlaylistSelection", (res) => {
 				this.result = [];
 				this.result.push(...res.data.result);
-				console.log(this.result);
 			});
 		},
 		mounted() {},
