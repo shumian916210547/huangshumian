@@ -4,23 +4,22 @@
 			<h3 class="title">人气歌单推荐</h3>
 			<p class="btn" @click="morelist">查看更多</p>
 		</div>
-		<van-swipe :loop="false" :width="120" :show-indicators="false">
+		<van-swipe :loop="false" :width="125" :show-indicators="false" :stop-propagation="false">
 			<van-swipe-item v-for="(item,index) in result" :key="index">
-				<img :src="result[index].picUrl" />
-				<div class="playCount">
-					<img src="~assets/img/playCount/play.svg" />
-					<i>{{simplify(result[index].playCount)}}</i>
-				</div>
-				<p>{{result[index].name}}</p>
+				<playlist-item :playlistitem="item" />
 			</van-swipe-item>
 		</van-swipe>
 	</div>
 </template>
 
 <script>
+	import PlaylistItem from "../playlist/PlayListItem";
+
 	export default {
 		name: "PlaylistSelection",
-		components: {},
+		components: {
+			PlaylistItem,
+		},
 		props: {},
 		data() {
 			return {
@@ -38,6 +37,7 @@
 			this.$bus.$on("getPlaylistSelection", (res) => {
 				this.result = [];
 				this.result.push(...res.data.result);
+				console.log(this.result);
 			});
 		},
 		mounted() {},
@@ -62,29 +62,9 @@
 		position: absolute;
 		right: 10px;
 	}
-	.van-swipe {
-		margin: 5px 0px 0px 10px;
-		height: 170px;
-	}
-	.van-swipe-item img {
-		border-radius: 10px;
-		height: 120px;
-		width: 110px;
-	}
-	.van-swipe-item p {
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		width: 110px;
-	}
-	.playCount {
-		right: 15px;
-		top: 0;
-		position: absolute;
-		color: white;
-	}
-	.playCount img {
-		width: 12px;
-		height: 12px;
+	.van-swipe-item {
+		margin: 15px 10px;
+		width: 105px !important;
+		height: 145px;
 	}
 </style>

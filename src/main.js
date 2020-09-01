@@ -17,6 +17,7 @@ Vue.prototype.$bus = new Vue();
 Vue.prototype.simplify = simplify;
 Vue.config.productionTip = false;
 
+
 router.beforeEach((to, from, next) => {
   if (store.state.token) {
     if (to.path == "/login") {

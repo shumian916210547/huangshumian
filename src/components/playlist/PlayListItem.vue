@@ -1,6 +1,6 @@
 <template>
 	<div class="PlayListItem" @click="itemClick(playlistitem.id)">
-		<img :src="playlistitem.coverImgUrl" />
+		<img :src="playlistitem.coverImgUrl||playlistitem.picUrl" />
 		<p>{{playlistitem.name}}</p>
 		<div class="playCount">
 			<img src="~assets/img/playCount/play.svg" />
@@ -28,8 +28,8 @@
 		computed: {},
 		methods: {
 			itemClick(id) {
-				this.$router.push("/listdetails");
 				this.$store.commit("set_songlistid", "");
+				this.$router.push("/listdetails");
 				this.$store.commit("set_songlistid", id);
 			},
 		},
@@ -39,15 +39,16 @@
 </script>
 <style lang="css" scoped>
 	.PlayListItem {
-		width: 165px;
+		width: 105px;
 	}
 	.PlayListItem img {
 		width: 100%;
+		border-radius: 10px;
 	}
 	.playCount {
 		width: 65px;
-		left: 105px;
-		bottom: 210px;
+		left: 46px;
+		bottom: 150px;
 		position: relative;
 		color: white;
 	}
@@ -56,7 +57,12 @@
 		height: 12px;
 	}
 	.PlayListItem p {
-		max-width: 165px;
-		height: 40px;
+		max-width: 105px;
+		height: 36px;
+		display: -webkit-box;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
 	}
 </style>

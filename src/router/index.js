@@ -5,9 +5,10 @@ Vue.use(ViewUI);
 const customPush = VueRouter.prototype.push;
 
 const Find = () => import("views/find/Find");
+const EverydaySongs = () => import("components/scroller/EverydaySongs");
 const songList = () => import("components/scroller/songList");
-const Station = () => import('components/scroller/Station')
-const ListDetails = () => import('components/listDetails/ListDetails')
+const Station = () => import('components/scroller/Station');
+const ListDetails = () => import('components/listDetails/ListDetails');
 
 const My = () => import("views/my/My");
 const Login = () => import("views/loginPage/Login");
@@ -33,6 +34,10 @@ const routes = [{
   {
     path: '/station',
     component: Station,
+  },
+  {
+    path: '/everydaysongs',
+    component: EverydaySongs
   },
   {
     path: "/my",

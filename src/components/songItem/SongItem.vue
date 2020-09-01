@@ -1,5 +1,5 @@
 <template>
-	<div class="SongItem" @click="songid(songitem.id)">
+	<div class="SongItem" @click="songid(songitem.id)" :class="index % 2 ? 'even_num' : 'sin_num'">
 		<p>{{index+1}}</p>
 		<p>{{songitem.name}}</p>
 		<p>{{songitem.ar[0].name}} - {{songitem.al.name}}</p>
@@ -34,9 +34,7 @@
 				});
 			},
 		},
-		created() {
-			console.log(this.songitem);
-		},
+		created() {},
 		mounted() {},
 	};
 </script>
@@ -77,5 +75,11 @@
 		text-overflow: ellipsis;
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
+	}
+	.even_num {
+		background: rgb(230, 230, 230);
+	}
+	.sin_num {
+		background: pink;
 	}
 </style>

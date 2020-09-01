@@ -1,6 +1,7 @@
 <template>
 	<div class="EverydaySongs">
 		<Modal v-model="modal" :fullscreen="true" :footer-hide="true">
+			<van-nav-bar title="每日推荐" left-text="返回" left-arrow @click-left="onLeftClick" />
 			<van-list>
 				<van-cell v-for="(item,index) in dailySongs" :key="index">
 					<div class="content">
@@ -15,6 +16,8 @@
 </template>
 
 <script>
+	import { getEverySongs } from "network/findpage/Findpage";
+
 	export default {
 		name: "EverydaySongs",
 		components: {},
@@ -27,13 +30,18 @@
 		},
 		watch: {},
 		computed: {},
-		methods: {},
-		created() {
-			this.$bus.$on("ESdata", (modal, res) => {
-				this.dailySongs = [];
-				this.modal = modal;
+		methods: {
+			onLeftClick() {
+				this.$router.push("/find");
+				this.modal = false;
+			},
+		},
+		created() {},
+		activated() {
+			this.modal = true;
+			this.dailySongs = [];
+			getEverySongs().then((res) => {
 				this.dailySongs.push(...res.data.data.dailySongs);
-				console.log(this.dailySongs);
 			});
 		},
 		mounted() {},

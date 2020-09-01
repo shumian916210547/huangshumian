@@ -70,6 +70,7 @@
 							this.$store.commit("set_cookie", res.data.cookie);
 							this.$store.commit("set_nickname", res.data.profile.nickname);
 							this.$store.commit("set_avatarUrl", res.data.profile.avatarUrl);
+							console.log((document.cookie = this.$store.state.cookie));
 							this.modal = false;
 							this.$router.push("/my");
 							setTimeout(() => {

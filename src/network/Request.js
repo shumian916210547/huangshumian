@@ -3,11 +3,9 @@ import Vue from "vue";
 import ViewUI from 'view-design';
 Vue.use(ViewUI);
 
-
-
 export function Request(config) {
   const instance = axios.create({
-    baseURL: "http://192.168.43.29:3000",
+    baseURL: "http://118.178.188.14:3000",
     timeout: "5000",
     withCredentials: true,
   });
@@ -16,6 +14,9 @@ export function Request(config) {
   instance.interceptors.request.use(
     (config) => {
       ViewUI.LoadingBar.start();
+      if (window.sessionStorage.getItem("cookie")) {
+        config.headers["demo"] = window.sessionStorage.getItem("cookie")
+      }
       return config;
     },
     (err) => {

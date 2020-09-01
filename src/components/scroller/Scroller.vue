@@ -8,34 +8,26 @@
 				<span>直播</span>
 			</van-swipe-item>
 		</van-swipe>
-		<es />
 	</div>
 </template>
 
 <script>
 	import { getEverySongs, getCatlist } from "network/findpage/Findpage";
 
-	import es from "./EverydaySongs";
-
 	export default {
 		name: "Scroller",
-		components: {
-			es,
-		},
+		components: {},
 		props: {},
 		data() {
 			return {
 				current: "1",
-				modal: true,
 			};
 		},
 		watch: {},
 		computed: {},
 		methods: {
 			getES() {
-				getEverySongs().then((res) => {
-					this.$bus.$emit("ESdata", this.modal, res);
-				});
+				this.$router.push("/everydaysongs");
 			},
 			getSL() {
 				this.$router.push("/songlist");

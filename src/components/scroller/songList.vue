@@ -40,9 +40,7 @@
 				getPlaylist(title).then((res) => {
 					this.list = [];
 					this.list.push(...res.data.playlists);
-					console.log(this.list);
 				});
-				console.log(title);
 			},
 
 			onLeftClick() {
@@ -51,12 +49,10 @@
 			},
 		},
 		created() {
-			this.Onclick(name, "全部歌单");
+			this.Onclick(0);
 		},
-
 		activated() {
 			getCatlist().then((res) => {
-				console.log(res);
 				this.modal = true;
 				this.navTitle = [];
 				this.navTitle.push(res.data.all.name);
