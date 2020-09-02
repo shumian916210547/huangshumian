@@ -13,7 +13,7 @@ export default new Vuex.Store({
     token: window.sessionStorage.getItem("token"),
     avatarUrl: window.sessionStorage.getItem("avatarUrl"),
     songlistid: window.sessionStorage.getItem("songlistid"),
-    music_src: window.sessionStorage.getItem("music_src"),
+    music_id: window.sessionStorage.getItem("music_id"),
     author: window.sessionStorage.getItem("author"),
     songname: window.sessionStorage.getItem("songname"),
     songurl: window.sessionStorage.getItem("songurl"),
@@ -43,9 +43,9 @@ export default new Vuex.Store({
       state.songlistid = data;
       window.sessionStorage.setItem("songlistid", data);
     },
-    set_music_src: (state, data) => {
-      state.music_src = data;
-      window.sessionStorage.setItem("music_src", data);
+    set_music_id: (state, data) => {
+      state.music_id = data;
+      window.sessionStorage.setItem("music_id", data);
     },
     set_author: (state, data) => {
       state.author = data;

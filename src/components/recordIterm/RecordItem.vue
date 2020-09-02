@@ -1,23 +1,21 @@
 <template>
 	<div
-		class="SongItem"
-		@click="songid(songitem.id,songitem.name,songitem.ar[0].name,songitem.al.picUrl)"
-		:class="index % 2 ? 'even_num' : 'sin_num'"
+		class="RecordItem"
+		@click="itemClick(recorditem.songid,recorditem.songname,recorditem.author,recorditem.imgurl,index)"
 	>
 		<p>{{index+1}}</p>
-		<p>{{songitem.name}}</p>
-		<p>{{songitem.ar[0].name}} - {{songitem.al.name}}</p>
+		<p>{{recorditem.songname}}</p>
+		<p>{{recorditem.author}}</p>
+		<img @click="handledelete(index)" src="~assets/img/audio/delete.svg" />
 	</div>
 </template>
 
 <script>
-	import { getSongUrl } from "network/findpage/Findpage";
-
 	export default {
-		name: "SongItem",
+		name: "RecordItem",
 		components: {},
 		props: {
-			songitem: {
+			recorditem: {
 				type: Object,
 			},
 			index: {
@@ -30,12 +28,11 @@
 		watch: {},
 		computed: {},
 		methods: {
-			songid(id, songname, author, songurl) {
-				console.log(id);
-				this.$store.commit("set_music_id", id);
-				this.$store.commit("set_songname", songname);
-				this.$store.commit("set_author", author);
-				this.$store.commit("set_songurl", songurl);
+			itemClick(id, songname, author, imgurl, index) {
+				this.$emit("getRecorditemUrl", id, songname, author, imgurl, index);
+			},
+			handledelete(index) {
+				this.$emit("delete", index);
 			},
 		},
 		created() {},
@@ -43,11 +40,11 @@
 	};
 </script>
 <style lang="css" scoped>
-	.SongItem {
-		margin: 5px 0px;
+	.RecordItem {
+		width: 100%;
 		height: 55px;
 	}
-	.SongItem p:nth-child(1) {
+	.RecordItem p:nth-child(1) {
 		font-size: 16px;
 		text-align: center;
 		height: 60px;
@@ -55,7 +52,7 @@
 		line-height: 60px;
 		color: rgb(181, 181, 181);
 	}
-	.SongItem p:nth-child(2) {
+	.RecordItem p:nth-child(2) {
 		position: relative;
 		font-size: 16px;
 		width: 295px;
@@ -67,7 +64,7 @@
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
 	}
-	.SongItem p:nth-child(3) {
+	.RecordItem p:nth-child(3) {
 		position: relative;
 		font-size: 14px;
 		width: 295px;
@@ -80,10 +77,11 @@
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
 	}
-	.even_num {
-		background: rgb(230, 230, 230);
-	}
-	.sin_num {
-		background: pink;
+	.RecordItem img {
+		position: relative;
+		width: 22px;
+		height: 22px;
+		bottom: 85px;
+		left: 80%;
 	}
 </style>
