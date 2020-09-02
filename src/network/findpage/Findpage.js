@@ -83,3 +83,12 @@ export function getSongUrl(id) {
     },
   });
 }
+
+export function getSearch(keywords) {
+  return Request({
+    url: "/cloudsearch",
+    params: {
+      keywords,
+    },
+  });
+}

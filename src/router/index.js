@@ -14,6 +14,8 @@ const My = () => import("views/my/My");
 const Login = () => import("views/loginPage/Login");
 const Forget = () => import("views/loginPage/forget/Forget");
 
+const Search = () => import("components/search/Search")
+
 Vue.use(VueRouter);
 VueRouter.prototype.push = function (payload) {
   return customPush.call(this, payload).catch((err) => err);
@@ -54,6 +56,10 @@ const routes = [{
   {
     path: '/listdetails',
     component: ListDetails,
+  },
+  {
+    path: '/search',
+    component: Search
   }
 ];
 
