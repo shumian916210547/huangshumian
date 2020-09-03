@@ -38,7 +38,6 @@
 				getSearch(val).then((res) => {
 					this.searchList = [];
 					this.searchList.push(...res.data.result.songs);
-					console.log(this.searchList);
 				});
 			},
 		},

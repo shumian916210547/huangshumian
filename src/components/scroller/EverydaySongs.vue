@@ -31,7 +31,6 @@
 			this.dailySongs = [];
 			getEverySongs().then((res) => {
 				this.dailySongs.push(...res.data.data.dailySongs);
-				console.log(res);
 			});
 		},
 		mounted() {},

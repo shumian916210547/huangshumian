@@ -89,6 +89,7 @@ export function getSearch(keywords) {
     url: "/cloudsearch",
     params: {
       keywords,
+      limit: 30,
     },
   });
 }

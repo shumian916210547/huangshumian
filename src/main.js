@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else {
-    if (to.path == "/forget") {
+    if (to.path == "/forget" || to.path == "/verificationcode") {
       next();
     } else {
       if (to.path == "/login") {

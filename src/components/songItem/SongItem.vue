@@ -31,7 +31,6 @@
 		computed: {},
 		methods: {
 			songid(id, songname, author, songurl) {
-				console.log(id);
 				this.$store.commit("set_music_id", id);
 				this.$store.commit("set_songname", songname);
 				this.$store.commit("set_author", author);

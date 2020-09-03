@@ -1,12 +1,13 @@
 <template>
-	<div class="Forget">
-		<van-nav-bar left-text="忘记密码" left-arrow @click-left="backClick" />
+	<div class="VerificationCode">
+		<van-nav-bar left-text="验证码登录" left-arrow @click-left="backClick" />
+		<i>2222</i>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: "Forget",
+		name: "VerificationCode",
 		components: {},
 		props: {},
 		data() {
@@ -24,7 +25,7 @@
 	};
 </script>
 <style lang="css" scoped>
-	.Forget {
+	.VerificationCode {
 		position: absolute;
 		background: white;
 		top: -55px;

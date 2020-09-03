@@ -1,5 +1,5 @@
 <template>
-	<div class="Player">
+	<div class="Player" v-show="isShow">
 		<div class="music">
 			<img class="image" :src="Songurl" />
 			<p class="songname">{{songname}}</p>
@@ -44,9 +44,22 @@
 				recordList: [],
 				audioSrc: "",
 				current: "",
+				isShow: false,
 			};
 		},
 		watch: {
+			$route() {
+				if (
+					this.$route.path == "/login" ||
+					this.$route.path == "/forget" ||
+					this.$route.path == "/verificationcode"
+				) {
+					this.isShow = false;
+				} else {
+					this.isShow = true;
+				}
+			},
+
 			music_id(newValue, oldValue) {
 				if (newValue) {
 					this.recordList.unshift({
@@ -56,7 +69,6 @@
 						songname: this.$store.state.songname,
 					});
 					getSongUrl(newValue).then((res) => {
-						console.log(res);
 						this.audioSrc = res.data.data[0].url;
 					});
 					setTimeout(() => {
