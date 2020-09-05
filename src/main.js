@@ -22,7 +22,7 @@ router.beforeEach((to, from, next) => {
   if (store.state.token) {
     if (to.path == "/login") {
       next({
-        path: "/my"
+        path: "/find"
       });
     } else {
       next();

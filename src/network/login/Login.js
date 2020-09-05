@@ -1,4 +1,6 @@
-import { Request } from "../Request";
+import {
+  Request
+} from "../Request";
 
 export function login(phone, password) {
   return Request({
@@ -28,5 +30,36 @@ export function exit() {
   return Request({
     url: "/logout",
     params: {},
+  });
+}
+
+export function sendcode(phone) {
+  return Request({
+    url: "/captcha/sent",
+    params: {
+      phone,
+    },
+  });
+}
+
+export function verifycode(phone, captcha) {
+  return Request({
+    url: "/captcha/verify",
+    params: {
+      phone,
+      captcha,
+    },
+  });
+}
+
+export function submit(captcha, phone, password, nickname) {
+  return Request({
+    url: "/register/cellphone",
+    params: {
+      captcha,
+      phone,
+      password,
+      nickname
+    },
   });
 }

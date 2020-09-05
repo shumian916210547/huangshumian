@@ -20,7 +20,6 @@
 				:rules="[{ required: true, message: '请填写密码' }]"
 			/>
 			<span class="forget" @click="Forgetclick">忘记密码?</span>
-			<span class="verify" @click="codeClick">验证码登录</span>
 			<div style="margin: 16px;">
 				<van-button
 					round
@@ -76,9 +75,6 @@
 			},
 			Forgetclick() {
 				this.$router.push("/forget");
-			},
-			codeClick() {
-				this.$router.push("/verificationcode");
 			},
 		},
 		created() {},

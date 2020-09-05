@@ -14,7 +14,6 @@ const My = () => import("views/my/My");
 
 
 const Login = () => import("views/loginPage/Login");
-const VerificationCode = () => import("views/loginPage/verificationCode/VerificationCode");
 const Forget = () => import("views/loginPage/forget/Forget");
 
 const Search = () => import("components/search/Search")
@@ -64,10 +63,7 @@ const routes = [{
     path: "/search",
     component: Search
   },
-  {
-    path: "/verificationcode",
-    component: VerificationCode,
-  }
+
 ];
 
 const router = new VueRouter({
